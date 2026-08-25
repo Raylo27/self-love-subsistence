@@ -26,7 +26,7 @@ export default function Portfolio() {
           <div className="contact-info">
             <h3>Let's Connect</h3>
             <p>Interested in my research, or simply want to chat about mental well-being?</p>
-            <a href="mailto:hello@selflovesubsistence.com" className="btn-secondary mt-2">Email Me</a>
+            <a href="mailto:dsupreme2013@gmail.com" className="btn-secondary mt-2">Email Me</a>
           </div>
         </div>
       </div>
