@@ -1,0 +1,149 @@
+.hero {
+  padding: 8rem 0;
+  background-color: var(--color-cream-dark);
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: var(--color-text-dark);
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  margin-top: 6rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+}
+
+.view-all-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-bottom: 6rem;
+}
+
+.journal-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.journal-card:hover {
+  transform: translateY(-8px);
+}
+
+.journal-image {
+  height: 350px;
+  overflow: hidden;
+}
+
+.journal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.journal-card:hover .journal-image img {
+  transform: scale(1.05);
+}
+
+.journal-info {
+  padding: 2rem;
+  text-align: center;
+}
+
+.journal-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-serif);
+}
+
+.price {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-sage);
+  margin-bottom: 1.5rem;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.tips-teaser {
+  background-color: var(--color-burgundy);
+  color: var(--color-text-light);
+  padding: 6rem 0;
+  text-align: center;
+  margin-bottom: -4rem; /* overlaps with footer gap */
+}
+
+.tips-teaser h2 {
+  color: var(--color-text-light);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tips-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tips-content .btn-secondary {
+  border-color: var(--color-text-light);
+  color: var(--color-text-light);
+}
+
+.tips-content .btn-secondary:hover {
+  background-color: var(--color-text-light);
+  color: var(--color-burgundy);
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero {
+    padding: 4rem 0;
+  }
+  .hero-actions {
+    flex-direction: column;
+  }
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
