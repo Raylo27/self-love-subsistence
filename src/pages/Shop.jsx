@@ -4,7 +4,6 @@ import './Shop.css';
 
 export default function Shop() {
   const [cart, setCart] = useState([]);
-  const [isCheckout, setIsCheckout] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const journals = [
@@ -16,9 +15,19 @@ export default function Shop() {
     setCart([...cart, journal]);
   };
 
-  const handleCheckout = (e) => {
-    e.preventDefault();
-    setIsCheckout(false);
+  const handleCheckout = () => {
+    const subject = encodeURIComponent('Inquiry: Purchasing a Journal');
+    let body = 'Hello Dominique,\n\nI am interested in purchasing the following journal(s):\n\n';
+    
+    cart.forEach(item => {
+      body += `- ${item.title} (${item.color})\n`;
+    });
+    
+    const total = (cart.length * 8).toFixed(2);
+    body += `\nTotal expected: $${total}\n\nPlease let me know the next steps for payment and shipping.\n\nThank you!`;
+    
+    window.location.href = `mailto:dsupreme2013@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+    
     setIsSuccess(true);
     setCart([]);
   };
@@ -29,9 +38,9 @@ export default function Shop() {
         <div className="success-icon">
           <Check size={48} />
         </div>
-        <h1>Order Confirmed!</h1>
-        <p>Thank you for supporting Self Love Subsistence.</p>
-        <p>Your beautiful journals are being prepared for shipping.</p>
+        <h1>Request Sent!</h1>
+        <p>Your email client should have opened to send your request directly to Dominique.</p>
+        <p>He will get back to you shortly with payment and shipping details.</p>
         <button className="btn-primary mt-4" onClick={() => setIsSuccess(false)}>Continue Shopping</button>
       </div>
     );
@@ -80,25 +89,9 @@ export default function Shop() {
                 <span>${(cart.length * 8).toFixed(2)}</span>
               </div>
               
-              {!isCheckout ? (
-                <button className="btn-primary w-100 mt-4" onClick={() => setIsCheckout(true)}>
-                  Proceed to Checkout
-                </button>
-              ) : (
-                <form className="checkout-form animate-fade-in" onSubmit={handleCheckout}>
-                  <h3>Checkout Details</h3>
-                  <input type="text" placeholder="Full Name" required />
-                  <input type="email" placeholder="Email Address" required />
-                  <input type="text" placeholder="Shipping Address" required />
-                  <input type="text" placeholder="Card Number (Mock)" required />
-                  <button type="submit" className="btn-primary w-100 mt-2">
-                    Pay ${(cart.length * 8).toFixed(2)}
-                  </button>
-                  <button type="button" className="btn-secondary w-100 mt-1" onClick={() => setIsCheckout(false)}>
-                    Cancel
-                  </button>
-                </form>
-              )}
+              <button className="btn-primary w-100 mt-4" onClick={handleCheckout}>
+                Email to Purchase
+              </button>
             </>
           )}
         </div>
